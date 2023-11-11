@@ -26,20 +26,20 @@ public class Facebook extends SocialClass implements Commentable {
         return true;
         
     }
-    
-    public String timeline(){
-        String info="";
+    @Override
+    public void timeline(){
+        
          for(int i=0;i<posts.size();i++){
-            info+=posts.get(i);
+             System.out.println(posts.get(i));
              for(int j=0;j<comentarios.size();j++){
                  
             if(comentarios.get(j).postId==i){
-                
-                info+=comentarios.get(j);
+               
+                System.out.println(comentarios.get(j).print());
                 
             }
             }
              
          }
-     return info;}
+     }
     }

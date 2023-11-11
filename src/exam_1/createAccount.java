@@ -117,7 +117,7 @@ public UberSocial_GUI social;
        String username= jTextField1.getText();
        String tipo = jComboBox1.getSelectedItem().toString();
         if(ubersocial.buscar(username, 0)==null){
-            ubersocial.agregarCuenta(username,tipo );
+            ubersocial.agregarCuenta(username,tipo);
             social= new UberSocial_GUI();
             social.setVisible(true);
             dispose();

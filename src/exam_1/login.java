@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public class login extends javax.swing.JFrame {
 
 public UberSocial_GUI social;
-public static UberSocial ubersocial;
+public static UberSocial ubersocial=new UberSocial();
 public static SocialClass usuario;
     /**
      * Creates new form createAccount
@@ -96,12 +96,15 @@ public static SocialClass usuario;
        if(user.equalsIgnoreCase("admin")){
            social = new UberSocial_GUI();
            social.setVisible(true);
+           dispose();
        }
        else if(ubersocial.buscar(user,0)!=null){
            usuario=ubersocial.buscar(user, 0);
            social = new UberSocial_GUI();
            social.setVisible(true);
+           dispose();
        }
+       else {jTextField1.setText(""); JOptionPane.showMessageDialog(null, "Este usuario no existe, ingrese el usuario admin si no se ha creado un user");}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

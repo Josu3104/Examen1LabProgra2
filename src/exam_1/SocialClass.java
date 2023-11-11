@@ -23,13 +23,11 @@ public abstract class SocialClass {
     }
     
     public boolean addFriend(String User){
-        for(String f:friends){
-            if(friends.contains(User)||f.equals(User)){
-                return false;
-            }
+        for(int i=0;i<friends.size();i++){
+            if(User.equals(friends.get(i))||User.equals(username))
+            return false;
             
-            friends.add(User);
-        }
+        }friends.add(User);
         return true;
     }
     
@@ -37,14 +35,18 @@ public abstract class SocialClass {
         posts.add(msg);
     }
     
-    public abstract String timeline();
+    public abstract void timeline();
     
     public void myProfile(){
-        System.out.println(username);
+        
         timeline();
-        for(int i = 0;i<=10;i++){
-            System.out.println(friends.get(i));
+        for(int i=0;i<friends.size();i++){
+            if(i>10){
+                break;
+            }
+            System.out.println("\n"+friends.get(i));
         }
+        
     }
     public String TipoCuenta(String tipo){
         return TipoCuenta=tipo;

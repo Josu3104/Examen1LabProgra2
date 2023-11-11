@@ -22,8 +22,8 @@ public final class Comment {
         fecha = date.get(Calendar.DATE);
     }
     
-    public void print(){
-        System.out.println("Autor: "+autor+"    -    Fecha: "+fecha+"/n"+contenido);
+    public String print(){
+        return"Autor: "+autor+"    -    Fecha: "+fecha+"/n"+contenido;
     }
     
     

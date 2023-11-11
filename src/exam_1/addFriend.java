@@ -4,6 +4,8 @@
  */
 package exam_1;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ferna
@@ -11,11 +13,16 @@ package exam_1;
 public class addFriend extends javax.swing.JFrame {
 public UberSocial ubersocial= login.ubersocial;
 public SocialClass user= login.usuario;
+public UberSocial_GUI social;
+public static login log;
     /**
      * Creates new form createAccount
      */
     public addFriend() {
         initComponents();
+        if(user==null){
+            JOptionPane.showMessageDialog(null, "El usuario loggedin es el admin, por favor crear un usuario");
+      log= new login();log.setVisible(true);dispose();  }
     }
 
     /**
@@ -87,6 +94,9 @@ public SocialClass user= login.usuario;
         String user2= jTextField1.getText();
         
         ubersocial.agregarAmigo(ubersocial.buscar(user.username, 0).username, user2);
+        social= new UberSocial_GUI();
+        social.setVisible(true);
+        dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

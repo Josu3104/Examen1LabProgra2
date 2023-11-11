@@ -15,12 +15,12 @@ public  class Twitter extends SocialClass{
     }
     
     @Override
-     public String timeline(){
-         String info="";
+     public void timeline(){
+        
          for(int i=0;i<posts.size();i++){
-             info+=posts.get(i);
+             System.out.println(posts.get(i));
              
-   }return info;
+   }
 }
      
 

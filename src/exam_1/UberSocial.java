@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author ferna
  */
 public class UberSocial {
-    public ArrayList<SocialClass> accounts;
+    public ArrayList<SocialClass> accounts=new ArrayList();
     public SocialClass cuenta;
     public int i;
     public SocialClass buscar(String username,int n){
@@ -27,9 +27,11 @@ public class UberSocial {
         if(buscar(username,0)==null){
             if(tipo.equalsIgnoreCase("facebook")){
                 cuenta = new Facebook(username);
+                cuenta.TipoCuenta("facebook");
               accounts.add(cuenta);}
             else if(tipo.equalsIgnoreCase("twitter")){
                cuenta = new Twitter(username);
+               cuenta.TipoCuenta("twitter");
             accounts.add(cuenta);}
             }}
     
@@ -40,21 +42,24 @@ public class UberSocial {
     }
      public void agregarAmigo(String user1, String user2){
          if(buscar(user1,0)!=null&&buscar(user2,0)!=null){
-            if(buscar(user1,0).TipoCuenta.equalsIgnoreCase("facebook")&&buscar(user2,0).TipoCuenta.equalsIgnoreCase("facebook"))
-             buscar(user1,0).addFriend(user2);
+            if(buscar(user1,0).TipoCuenta.equalsIgnoreCase("facebook")&&buscar(user2,0).TipoCuenta.equalsIgnoreCase("facebook")){
+             buscar(user1,0).addFriend(user2);}
              
-            else if(buscar(user1,0).TipoCuenta.equalsIgnoreCase("twitter")&&buscar(user2,0).TipoCuenta.equalsIgnoreCase("twitter"))
-                buscar(user1,0).addFriend(user2);
+            else if(buscar(user1,0).TipoCuenta.equalsIgnoreCase("twitter")&&buscar(user2,0).TipoCuenta.equalsIgnoreCase("twitter")){
+                buscar(user1,0).addFriend(user2);}
             else JOptionPane.showMessageDialog(null, "Ambos usuarios deben pertenecer a la misma red social");
          }
+         else JOptionPane.showMessageDialog(null, "Este usuario no existe");
      }
      public void agregarCommment(String user, int postID,String autor,String comment){
          if(buscar(user,0)!=null&&buscar(user,0).TipoCuenta.equalsIgnoreCase("facebook")){
            for(SocialClass account: accounts){
                if(account instanceof Facebook&&account.equals(buscar(user,0))){
                    Facebook facebookAcc= (Facebook) account;
+                   if(postID+1==facebookAcc.posts.size()){
                    facebookAcc.addComment(new Comment(postID,autor,comment));
-                   accounts.set(i, facebookAcc);
+                   accounts.set(i, account);}
+                   else JOptionPane.showMessageDialog(null, "Post ID incorrecto");
                }
            }
          }
@@ -65,5 +70,6 @@ public class UberSocial {
     public void profileForm(String user){
     if(buscar(user,0)!=null){
         buscar(user,0).myProfile();
+        buscar(user,0).timeline();
     }}
 }

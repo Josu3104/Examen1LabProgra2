@@ -4,6 +4,9 @@
  */
 package exam_1;
 
+import static exam_1.addFriend.log;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ferna
@@ -11,11 +14,15 @@ package exam_1;
 public class addPost extends javax.swing.JFrame {
 public UberSocial ubersocial= login.ubersocial;
 public SocialClass user= login.usuario;
+public UberSocial_GUI social;
     /**
      * Creates new form createAccount
      */
     public addPost() {
         initComponents();
+        if(user==null){
+            JOptionPane.showMessageDialog(null, "El usuario loggedin es el admin, por favor crear un usuario");
+      log= new login();log.setVisible(true);dispose();  }
     }
 
     /**
@@ -67,7 +74,11 @@ public SocialClass user= login.usuario;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(ubersocial.buscar(user.username, 0)!=null){
             ubersocial.agregarPost(ubersocial.buscar(user.username, 0).username, jTextArea1.getText());
+            social= new UberSocial_GUI();
+            social.setVisible(true);
+            dispose();
         }
+        else{ JOptionPane.showMessageDialog(null, "El usuario loggedin no existe o es el admin");}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -101,9 +112,13 @@ public SocialClass user= login.usuario;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new addPost().setVisible(true);
+                
             }
+            
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
